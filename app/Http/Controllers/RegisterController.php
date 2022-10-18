@@ -13,7 +13,7 @@ class RegisterController extends Controller
 
     public function show(){
         if(Auth::check()){
-            return redirect()->route('home.index');
+            return redirect()->route('login.show');
         }
         return view('auth.register');
     }
@@ -21,16 +21,9 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request){
         
         $user = User::create($request->validated());
-        auth()->login($user);
-        return redirect('/home')->with('success', "Account successfully registered.");
-        /*
-        $user = new User;
-         $user->name = $request->name;
-        $user->username = $request->username;
-        $user->email = $request->email;
-        $user->setPassword($request->password);
-        $user->save();
-        return redirect('/asdasd')->with('success', "Account successfully registered."); */
+        //auth()->login($user);
+        return redirect('login')->with('success', "Account successfully registered.");
+        
 
     }
 }

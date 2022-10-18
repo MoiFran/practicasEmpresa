@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\rolOneController;
+use App\Http\Controllers\rol2Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +28,12 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('/', function () {
         return view('home.index');
     });
+    
     Route::get('/home', 'HomeController@index')->name('home.index');
+    Route::get('/rol1', 'rolOneController@show')->name('auth.partials.rolOne');
+    Route::get('/rol2', 'rol2Controller@show')->name('auth.partials.ro2One');
 
-    Route::group(['middleware' => ['guest']], function () {
+    //Route::group(['middleware' => ['guest']], function () {
         /**
          * Register Routes
          */
@@ -40,7 +45,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
          */
         Route::get('/login', 'LoginController@show')->name('login.show');
         Route::post('/login', 'LoginController@login')->name('login.perform');
-    });
+
+
+        
+    //});
 
     Route::group(['middleware' => ['auth']], function () {
         /**
