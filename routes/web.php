@@ -31,7 +31,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     
     Route::get('/home', 'HomeController@index')->name('home.index');
     Route::get('/rol1', 'rolOneController@show')->name('auth.partials.rolOne');
-    Route::get('/rol2', 'rol2Controller@show')->name('auth.partials.ro2One');
+    Route::get('/rol2', 'rol2Controller@show')->name('auth.partials.rol2');
 
     //Route::group(['middleware' => ['guest']], function () {
         /**
